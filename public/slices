@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Slices</title>
+    <title>Zig by Example: Slices</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'arrays';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'maps';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="slices">
-      <h2><a href="./">Go by Example</a>: Slices</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Slices</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p><em>Slices</em> are an important data type in Go, giving
@@ -35,44 +35,44 @@ a more powerful interface to sequences than arrays.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/kiy1StxorBF"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;slices&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Unlike arrays, slices are typed only by the
@@ -82,12 +82,12 @@ length 0.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">string</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;uninit:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">s</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To create an empty slice with non-zero length, use
@@ -100,19 +100,19 @@ as an additional parameter to <code>make</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;emp:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="s">&#34;cap:&#34;</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>We can set and get just like with arrays.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;a&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;b&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;c&#34;</span>
@@ -120,18 +120,18 @@ as an additional parameter to <code>make</code>.</p>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;get:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>len</code> returns the length of the slice as expected.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>In addition to these basic operations, slices
@@ -143,13 +143,13 @@ Note that we need to accept a return value from
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;d&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;e&#34;</span><span class="p">,</span> <span class="s">&#34;f&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;apd:&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Slices can also be <code>copy</code>&rsquo;d. Here we create an
@@ -158,13 +158,13 @@ into <code>c</code> from <code>s</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">copy</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;cpy:&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Slices support a &ldquo;slice&rdquo; operator with the syntax
@@ -173,36 +173,36 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">l</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sl1:&#34;</span><span class="p">,</span> <span class="nx">l</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This slices up to (but excluding) <code>s[5]</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">l</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sl2:&#34;</span><span class="p">,</span> <span class="nx">l</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>And this slices up from (and including) <code>s[2]</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">l</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;sl3:&#34;</span><span class="p">,</span> <span class="nx">l</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>We can declare and initialize a variable for slice
@@ -210,12 +210,12 @@ in a single line as well.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;g&#34;</span><span class="p">,</span> <span class="s">&#34;h&#34;</span><span class="p">,</span> <span class="s">&#34;i&#34;</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;dcl:&#34;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>The <code>slices</code> package contains a number of useful
@@ -223,14 +223,14 @@ utility functions for slices.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t2</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;g&#34;</span><span class="p">,</span> <span class="s">&#34;h&#34;</span><span class="p">,</span> <span class="s">&#34;i&#34;</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">slices</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">t2</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;t == t2&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Slices can be composed into multi-dimensional data
@@ -239,7 +239,7 @@ vary, unlike with multi-dimensional arrays.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">twoD</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">innerLen</span> <span class="o">:=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span>
@@ -252,11 +252,11 @@ vary, unlike with multi-dimensional arrays.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Note that while slices are different types than arrays,
@@ -264,7 +264,7 @@ they are rendered similarly by <code>fmt.Println</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run slices.go
 </span></span><span class="line"><span class="cl"><span class="go">uninit: [] true true
 </span></span></span><span class="line"><span class="cl"><span class="go">emp: [  ] len: 3 cap: 3
@@ -281,7 +281,7 @@ they are rendered similarly by <code>fmt.Println</code>.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">2d:  [[0] [1 2] [2 3 4]]</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Check out this <a href="https://go.dev/blog/slices-intro">great blog post</a>
@@ -290,11 +290,11 @@ implementation of slices in Go.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Now that we&rsquo;ve seen arrays and slices we&rsquo;ll look at
@@ -302,18 +302,18 @@ Go&rsquo;s other key builtin data structure: maps.</p>
 
           </td>
           <td class="code empty">
-            
-          
+
+
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="maps">Maps</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

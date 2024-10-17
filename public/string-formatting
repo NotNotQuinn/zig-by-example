@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: String Formatting</title>
+    <title>Zig by Example: String Formatting</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'string-functions';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'text-templates';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="string-formatting">
-      <h2><a href="./">Go by Example</a>: String Formatting</h2>
-      
+      <h2><a href="./">Zig by Example</a>: String Formatting</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Go offers excellent support for string formatting in
@@ -36,56 +36,56 @@ common string formatting tasks.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/EZCZX1Uwp6D"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">point</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Go offers several printing &ldquo;verbs&rdquo; designed to
@@ -94,12 +94,12 @@ an instance of our <code>point</code> struct.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;struct1: %v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>If the value is a struct, the <code>%+v</code> variant will
@@ -107,11 +107,11 @@ include the struct&rsquo;s field names.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;struct2: %+v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>The <code>%#v</code> variant prints a Go syntax representation
@@ -120,33 +120,33 @@ would produce that value.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;struct3: %#v\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To print the type of a value, use <code>%T</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;type: %T\n&#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Formatting booleans is straight-forward.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;bool: %t\n&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>There are many options for formatting integers.
@@ -154,22 +154,22 @@ Use <code>%d</code> for standard, base-10 formatting.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;int: %d\n&#34;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This prints a binary representation.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;bin: %b\n&#34;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This prints the character corresponding to the
@@ -177,22 +177,22 @@ given integer.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;char: %c\n&#34;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>%x</code> provides hex encoding.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;hex: %x\n&#34;</span><span class="p">,</span> <span class="mi">456</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>There are also several formatting options for
@@ -200,11 +200,11 @@ floats. For basic decimal formatting use <code>%f</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float1: %f\n&#34;</span><span class="p">,</span> <span class="mf">78.9</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>%e</code> and <code>%E</code> format the float in (slightly
@@ -212,34 +212,34 @@ different versions of) scientific notation.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float2: %e\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;float3: %E\n&#34;</span><span class="p">,</span> <span class="mf">123400000.0</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>For basic string printing use <code>%s</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str1: %s\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To double-quote strings as in Go source, use <code>%q</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str2: %q\n&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;string\&#34;&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>As with integers seen earlier, <code>%x</code> renders
@@ -248,22 +248,22 @@ per byte of input.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;str3: %x\n&#34;</span><span class="p">,</span> <span class="s">&#34;hex this&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To print a representation of a pointer, use <code>%p</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;pointer: %p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>When formatting numbers you will often want to
@@ -275,11 +275,11 @@ spaces.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width1: |%6d|%6d|\n&#34;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">345</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>You can also specify the width of printed floats,
@@ -289,22 +289,22 @@ width.precision syntax.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width2: |%6.2f|%6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To left-justify, use the <code>-</code> flag.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width3: |%-6.2f|%-6.2f|\n&#34;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.45</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>You may also want to control width when formatting
@@ -313,22 +313,22 @@ table-like output. For basic right-justified width.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width4: |%6s|%6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To left-justify use the <code>-</code> flag as with numbers.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;width5: |%-6s|%-6s|\n&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>So far we&rsquo;ve seen <code>Printf</code>, which prints the
@@ -337,12 +337,12 @@ and returns a string without printing it anywhere.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;sprintf: a %s&#34;</span><span class="p">,</span> <span class="s">&#34;string&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>You can format+print to <code>io.Writers</code> other than
@@ -350,22 +350,22 @@ and returns a string without printing it anywhere.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&#34;io: an %s\n&#34;</span><span class="p">,</span> <span class="s">&#34;error&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run string-formatting.go
 </span></span><span class="line"><span class="cl"><span class="go">struct1: {1 2}
 </span></span></span><span class="line"><span class="cl"><span class="go">struct2: {x:1 y:2}
@@ -392,14 +392,14 @@ and returns a string without printing it anywhere.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">io: an error</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="text-templates">Text Templates</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

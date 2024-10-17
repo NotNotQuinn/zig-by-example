@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Logging</title>
+    <title>Zig by Example: Logging</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'environment-variables';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'http-client';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="logging">
-      <h2><a href="./">Go by Example</a>: Logging</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Logging</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>The Go standard library provides straightforward
@@ -43,13 +43,13 @@ structured output.</p>
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;bytes&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
@@ -57,28 +57,28 @@ structured output.</p>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="s">&#34;log/slog&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Simply invoking functions like <code>Println</code> from the
@@ -90,11 +90,11 @@ logging.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;standard logger&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Loggers can be configured with <em>flags</em> to set
@@ -106,12 +106,12 @@ microsecond accuracy, for example.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">SetFlags</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span> <span class="p">|</span> <span class="nx">log</span><span class="p">.</span><span class="nx">Lmicroseconds</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;with micro&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>It also supports emitting the file name and
@@ -119,12 +119,12 @@ line from which the <code>log</code> function is called.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">SetFlags</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span> <span class="p">|</span> <span class="nx">log</span><span class="p">.</span><span class="nx">Lshortfile</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;with file/line&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>It may be useful to create a custom logger and
@@ -134,12 +134,12 @@ from other loggers.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">mylog</span> <span class="o">:=</span> <span class="nx">log</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="s">&#34;my:&#34;</span><span class="p">,</span> <span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">mylog</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;from mylog&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>We can set the prefix
@@ -148,12 +148,12 @@ with the <code>SetPrefix</code> method.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">mylog</span><span class="p">.</span><span class="nf">SetPrefix</span><span class="p">(</span><span class="s">&#34;ohmy:&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">mylog</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;from mylog&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Loggers can have custom output targets;
@@ -161,34 +161,34 @@ any <code>io.Writer</code> works.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">buf</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">buflog</span> <span class="o">:=</span> <span class="nx">log</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">buf</span><span class="p">,</span> <span class="s">&#34;buf:&#34;</span><span class="p">,</span> <span class="nx">log</span><span class="p">.</span><span class="nx">LstdFlags</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This call writes the log output into <code>buf</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">buflog</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This will actually show it on standard output.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;from buflog:&#34;</span><span class="p">,</span> <span class="nx">buf</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>The <code>slog</code> package provides
@@ -197,13 +197,13 @@ in JSON format is straightforward.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">jsonHandler</span> <span class="o">:=</span> <span class="nx">slog</span><span class="p">.</span><span class="nf">NewJSONHandler</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">myslog</span> <span class="o">:=</span> <span class="nx">slog</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">jsonHandler</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">myslog</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;hi there&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>In addition to the message, <code>slog</code> output can
@@ -212,16 +212,16 @@ pairs.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">myslog</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;hello again&#34;</span><span class="p">,</span> <span class="s">&#34;key&#34;</span><span class="p">,</span> <span class="s">&#34;val&#34;</span><span class="p">,</span> <span class="s">&#34;age&#34;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Sample output; the date and time
@@ -229,7 +229,7 @@ emitted will depend on when the example ran.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run logging.go
 </span></span><span class="line"><span class="cl"><span class="go">2023/08/22 10:45:16 standard logger
 </span></span></span><span class="line"><span class="cl"><span class="go">2023/08/22 10:45:16.904141 with micro
@@ -239,7 +239,7 @@ emitted will depend on when the example ran.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">from buflog:buf:2023/08/22 10:45:16 hello</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>These are wrapped for clarity of presentation
@@ -248,7 +248,7 @@ on a single line.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">{&#34;time&#34;:&#34;2023-08-22T10:45:16.904166391-07:00&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go"> &#34;level&#34;:&#34;INFO&#34;,&#34;msg&#34;:&#34;hi there&#34;}
 </span></span></span><span class="line"><span class="cl"><span class="go">{&#34;time&#34;:&#34;2023-08-22T10:45:16.904178985-07:00&#34;,
@@ -256,14 +256,14 @@ on a single line.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">    &#34;key&#34;:&#34;val&#34;,&#34;age&#34;:25}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="http-client">HTTP Client</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Strings and Runes</title>
+    <title>Zig by Example: Strings and Runes</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'pointers';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'structs';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="strings-and-runes">
-      <h2><a href="./">Go by Example</a>: Strings and Runes</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Strings and Runes</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>A Go string is a read-only slice of bytes. The language
@@ -41,44 +41,44 @@ introduction to the topic.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/-iNDXZ9IM3s"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;unicode/utf8&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>s</code> is a <code>string</code> assigned a literal value
@@ -88,11 +88,11 @@ encoded text.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&#34;สวัสดี&#34;</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Since strings are equivalent to <code>[]byte</code>, this
@@ -100,11 +100,11 @@ will produce the length of the raw bytes stored within.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Len:&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Indexing into a string produces the raw byte values at
@@ -113,14 +113,14 @@ the bytes that constitute the code points in <code>s</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%x &#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To count how many <em>runes</em> are in a string, we can use
@@ -133,11 +133,11 @@ may be surprising.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Rune count:&#34;</span><span class="p">,</span> <span class="nx">utf8</span><span class="p">.</span><span class="nf">RuneCountInString</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>A <code>range</code> loop handles strings specially and decodes
@@ -145,13 +145,13 @@ each <code>rune</code> along with its offset in the string.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">runeValue</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%#U starts at %d\n&#34;</span><span class="p">,</span> <span class="nx">runeValue</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>We can achieve the same iteration by using the
@@ -159,7 +159,7 @@ each <code>rune</code> along with its offset in the string.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;\nUsing DecodeRuneInString&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="nx">i</span> <span class="o">+=</span> <span class="nx">w</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">runeValue</span><span class="p">,</span> <span class="nx">width</span> <span class="o">:=</span> <span class="nx">utf8</span><span class="p">.</span><span class="nf">DecodeRuneInString</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">:])</span>
@@ -167,30 +167,30 @@ each <code>rune</code> along with its offset in the string.</p>
 </span></span><span class="line"><span class="cl">        <span class="nx">w</span> <span class="p">=</span> <span class="nx">width</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This demonstrates passing a <code>rune</code> value to a function.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nf">examineRune</span><span class="p">(</span><span class="nx">runeValue</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">examineRune</span><span class="p">(</span><span class="nx">r</span> <span class="kt">rune</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Values enclosed in single quotes are <em>rune literals</em>. We
@@ -198,7 +198,7 @@ can compare a <code>rune</code> value to a rune literal directly.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">r</span> <span class="o">==</span> <span class="sc">&#39;t&#39;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;found tee&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">r</span> <span class="o">==</span> <span class="sc">&#39;ส&#39;</span> <span class="p">{</span>
@@ -207,20 +207,20 @@ can compare a <code>rune</code> value to a rune literal directly.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run strings-and-runes.go
 </span></span><span class="line"><span class="cl"><span class="go">Len: 18
-</span></span></span><span class="line"><span class="cl"><span class="go">e0 b8 aa e0 b8 a7 e0 b8 b1 e0 b8 aa e0 b8 94 e0 b8 b5 
+</span></span></span><span class="line"><span class="cl"><span class="go">e0 b8 aa e0 b8 a7 e0 b8 b1 e0 b8 aa e0 b8 94 e0 b8 b5
 </span></span></span><span class="line"><span class="cl"><span class="go">Rune count: 6
 </span></span></span><span class="line"><span class="cl"><span class="go">U+0E2A &#39;ส&#39; starts at 0
 </span></span></span><span class="line"><span class="cl"><span class="go">U+0E27 &#39;ว&#39; starts at 3
@@ -230,13 +230,13 @@ can compare a <code>rune</code> value to a rune literal directly.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">U+0E35 &#39;ี&#39; starts at 15</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">Using DecodeRuneInString
 </span></span></span><span class="line"><span class="cl"><span class="go">U+0E2A &#39;ส&#39; starts at 0
 </span></span></span><span class="line"><span class="cl"><span class="go">found so sua
@@ -248,14 +248,14 @@ can compare a <code>rune</code> value to a rune literal directly.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">U+0E35 &#39;ี&#39; starts at 15</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="structs">Structs</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Context</title>
+    <title>Zig by Example: Context</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'http-server';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'spawning-processes';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="context">
-      <h2><a href="./">Go by Example</a>: Context</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Context</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>In the previous example we looked at setting up a simple
@@ -43,13 +43,13 @@ across API boundaries and goroutines.</p>
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
@@ -57,17 +57,17 @@ across API boundaries and goroutines.</p>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>A <code>context.Context</code> is created for each request by
@@ -76,13 +76,13 @@ the <code>Context()</code> method.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">req</span><span class="p">.</span><span class="nf">Context</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;server: hello handler started&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;server: hello handler ended&#34;</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Wait for a few seconds before sending a reply to the
@@ -93,14 +93,14 @@ the work and return as soon as possible.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;hello\n&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>The context&rsquo;s <code>Err()</code> method returns an error
@@ -109,7 +109,7 @@ closed.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">        <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Err</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;server:&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">internalError</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span>
@@ -118,17 +118,17 @@ closed.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>As before, we register our handler on the &ldquo;/hello&rdquo;
@@ -136,28 +136,28 @@ route, and start serving.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/hello&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8090&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Run the server in the background.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run context.go &amp;</span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Simulate a client request to <code>/hello</code>, hitting
@@ -166,7 +166,7 @@ cancellation.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> curl localhost:8090/hello
 </span></span><span class="line"><span class="cl"><span class="go">server: hello handler started
 </span></span></span><span class="line"><span class="cl"><span class="go">^C
@@ -174,14 +174,14 @@ cancellation.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">server: hello handler ended</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="spawning-processes">Spawning Processes</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Environment Variables</title>
+    <title>Zig by Example: Environment Variables</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'command-line-subcommands';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'logging';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="environment-variables">
-      <h2><a href="./">Go by Example</a>: Environment Variables</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Environment Variables</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p><a href="https://en.wikipedia.org/wiki/Environment_variable">Environment variables</a>
@@ -37,27 +37,27 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/2jmwXM264NC"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
@@ -65,17 +65,17 @@ Let&rsquo;s look at how to set, get, and list environment variables.</p>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>To set a key/value pair, use <code>os.Setenv</code>. To get a
@@ -85,13 +85,13 @@ environment.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">os</span><span class="p">.</span><span class="nf">Setenv</span><span class="p">(</span><span class="s">&#34;FOO&#34;</span><span class="p">,</span> <span class="s">&#34;1&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;FOO:&#34;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Getenv</span><span class="p">(</span><span class="s">&#34;FOO&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;BAR:&#34;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Getenv</span><span class="p">(</span><span class="s">&#34;BAR&#34;</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Use <code>os.Environ</code> to list all key/value pairs in the
@@ -101,7 +101,7 @@ get the key and value. Here we print all the keys.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Environ</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">pair</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">SplitN</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="s">&#34;=&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -110,11 +110,11 @@ get the key and value. Here we print all the keys.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Running the program shows that we pick up the value
@@ -123,13 +123,13 @@ for <code>FOO</code> that we set in the program, but that
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run environment-variables.go
 </span></span><span class="line"><span class="cl"><span class="go">FOO: 1
 </span></span></span><span class="line"><span class="cl"><span class="go">BAR: </span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>The list of keys in the environment will depend on your
@@ -137,7 +137,7 @@ particular machine.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="go">TERM_PROGRAM
 </span></span></span><span class="line"><span class="cl"><span class="go">PATH
 </span></span></span><span class="line"><span class="cl"><span class="go">SHELL
@@ -145,7 +145,7 @@ particular machine.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">FOO</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>If we set <code>BAR</code> in the environment first, the running
@@ -153,21 +153,21 @@ program picks that value up.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> BAR=2 go run environment-variables.go
 </span></span><span class="line"><span class="cl"><span class="go">FOO: 1
 </span></span></span><span class="line"><span class="cl"><span class="go">BAR: 2
 </span></span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="logging">Logging</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

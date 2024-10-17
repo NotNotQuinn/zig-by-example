@@ -4,4 +4,4 @@ Response status: 200 OK
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example</title>
+    <title>Zig by Example</title>

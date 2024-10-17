@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Random Numbers</title>
+    <title>Zig by Example: Random Numbers</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'time-formatting-parsing';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'number-parsing';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="random-numbers">
-      <h2><a href="./">Go by Example</a>: Random Numbers</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Random Numbers</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Go&rsquo;s <code>math/rand/v2</code> package provides
@@ -36,44 +36,44 @@ generation.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/TkgmNAl8euK"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;math/rand/v2&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>For example, <code>rand.IntN</code> returns a random <code>int</code> n,
@@ -81,13 +81,13 @@ generation.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>rand.Float64</code> returns a <code>float64</code> <code>f</code>,
@@ -95,11 +95,11 @@ generation.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>This can be used to generate random floats in
@@ -107,13 +107,13 @@ other ranges, for example <code>5.0 &lt;= f' &lt; 10.0</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">((</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">((</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>If you want a known seed, create a new
@@ -125,7 +125,7 @@ numbers.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s2</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">NewPCG</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">r2</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">r2</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
@@ -133,13 +133,13 @@ numbers.</p>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">s3</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">NewPCG</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">r3</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">s3</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="nx">r3</span><span class="p">.</span><span class="nf">IntN</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
@@ -148,11 +148,11 @@ numbers.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Some of the generated numbers may be
@@ -160,7 +160,7 @@ different when you run the sample.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run random-numbers.go
 </span></span><span class="line"><span class="cl"><span class="go">68,56
 </span></span></span><span class="line"><span class="cl"><span class="go">0.8090228139659177
@@ -169,7 +169,7 @@ different when you run the sample.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">94,49</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>See the <a href="https://pkg.go.dev/math/rand/v2"><code>math/rand/v2</code></a>
@@ -178,18 +178,18 @@ that Go can provide.</p>
 
           </td>
           <td class="code empty">
-            
-          
+
+
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="number-parsing">Number Parsing</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>

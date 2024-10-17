@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Time Formatting / Parsing</title>
+    <title>Zig by Example: Time Formatting / Parsing</title>
     <link rel=stylesheet href="site.css">
   </head>
   <script>
@@ -10,24 +10,24 @@
           if (e.ctrlKey || e.altKey || e.shiftKey) {
               return;
           }
-          
+
           if (e.key == "ArrowLeft") {
               window.location.href = 'epoch';
           }
-          
-          
+
+
           if (e.key == "ArrowRight") {
               window.location.href = 'random-numbers';
           }
-          
+
       }
   </script>
   <body>
     <div class="example" id="time-formatting-parsing">
-      <h2><a href="./">Go by Example</a>: Time Formatting / Parsing</h2>
-      
+      <h2><a href="./">Zig by Example</a>: Time Formatting / Parsing</h2>
+
       <table>
-        
+
         <tr>
           <td class="docs">
             <p>Go supports time formatting and parsing via
@@ -35,45 +35,45 @@ pattern-based layouts.</p>
 
           </td>
           <td class="code empty leading">
-            
-          
+
+
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
             <a href="https://go.dev/play/p/BoZYtr_2j66"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Here&rsquo;s a basic example of formatting a time
@@ -82,26 +82,26 @@ constant.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">))</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>Time parsing uses the same layout values as <code>Format</code>.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">t1</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s">&#34;2012-11-01T22:08:41+00:00&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>Format</code> and <code>Parse</code> use example-based layouts. Usually
@@ -114,7 +114,7 @@ The example time must be exactly as shown: the year 2006,
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;3:04PM&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;Mon Jan _2 15:04:05 2006&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02T15:04:05.999999-07:00&#34;</span><span class="p">))</span>
@@ -123,7 +123,7 @@ The example time must be exactly as shown: the year 2006,
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p>For purely numeric representations you can also
@@ -132,13 +132,13 @@ components of the time value.</p>
 
           </td>
           <td class="code leading">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d-%02d-%02dT%02d:%02d:%02d-00:00\n&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nf">Second</span><span class="p">())</span></span></span></code></pre>
           </td>
         </tr>
-        
+
         <tr>
           <td class="docs">
             <p><code>Parse</code> will return an error on malformed input
@@ -146,25 +146,25 @@ explaining the parsing problem.</p>
 
           </td>
           <td class="code">
-            
+
           <pre class="chroma"><code><span class="line"><span class="cl">    <span class="nx">ansic</span> <span class="o">:=</span> <span class="s">&#34;Mon Jan _2 15:04:05 2006&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">ansic</span><span class="p">,</span> <span class="s">&#34;8:41PM&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">p</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
+
       <table>
-        
+
         <tr>
           <td class="docs">
-            
+
           </td>
           <td class="code">
-            
-          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time-formatting-parsing.go 
+
+          <pre class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> go run time-formatting-parsing.go
 </span></span><span class="line"><span class="cl"><span class="go">2014-04-15T18:00:15-07:00
 </span></span></span><span class="line"><span class="cl"><span class="go">2012-11-01 22:08:41 +0000 +0000
 </span></span></span><span class="line"><span class="cl"><span class="go">6:00PM
@@ -175,14 +175,14 @@ explaining the parsing problem.</p>
 </span></span></span><span class="line"><span class="cl"><span class="go">parsing time &#34;8:41PM&#34; as &#34;Mon Jan _2 15:04:05 2006&#34;: ...</span></span></span></code></pre>
           </td>
         </tr>
-        
+
       </table>
-      
-      
+
+
       <p class="next">
         Next example: <a href="random-numbers">Random Numbers</a>.
       </p>
-      
+
 
     <p class="footer">
       by <a href="https://markmcgranaghan.com">Mark McGranaghan</a> and <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
