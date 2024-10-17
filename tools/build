@@ -6,6 +6,8 @@ verbose() {
 	! test -z "$VERBOSE"
 }
 
+verbose && echo "zig version $(zig version) ($(which zig))"
+
 verbose && echo "Running tests..."
 tools/test
 
