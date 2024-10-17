@@ -81,8 +81,8 @@ func mustGlob(glob string) []string {
 }
 
 func whichLexer(path string) string {
-	if strings.HasSuffix(path, ".go") {
-		return "go"
+	if strings.HasSuffix(path, ".zig") {
+		return "zig"
 	} else if strings.HasSuffix(path, ".sh") {
 		return "console"
 	}
