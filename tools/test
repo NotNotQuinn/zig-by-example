@@ -4,5 +4,9 @@
 
 set -eo pipefail
 
-zig ast-check ./examples/
+paths=$(ls ./examples/*/*.zig)
+
+for file in $paths; do
+	zig ast-check $file
+done
 # TODO: Ensure code compiles
