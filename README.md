@@ -16,6 +16,22 @@ The built `public` directory can be served by any
 static content system. The production site uses ~S3 and
 CloudFront~Cloudflare Pages, for example.
 
+### Note
+
+As stated below, Zig by Example was created by Jason Phan first.
+I have decided to create this because I want to learn zig (I have written near-zero zig code).
+I find one of the best ways to learn something is to explain it.
+And I also enjoy explaining things.
+
+Although I enjoy it, I may not necessarily have time for it as I am currently in
+university. I will try to respond to any issues that get created or to any emails
+about this within a month or so. If you would like to contribute an example,
+I will probably be picky about how everything is worded. I may even end up rewriting it all
+myself. I appreciate the feedback and if you have any ideas for what examples I should add
+let me know!
+
+Quinn
+
 ### Building
 
 To build the site you'll need Go (in addition to Zig) installed. Run:
@@ -67,19 +83,3 @@ inspired this project.
 
 And thanks to [Jason Phan](https://github.com/ibokuri)
 who did [Zig by Example](https://zig-by-example.com/) first.
-
-### Note
-
-As above, Zig by Example was created by Jason Phan first.
-I have decided to create this because I want to learn zig (I have written near-zero zig code).
-I find one of the best ways to learn something is to explain it.
-And I also enjoy explaining things.
-
-Although I enjoy it, I may not necessarily have time for it as I am currently in
-university. I will try to respond to any issues that get created or to any emails
-about this within a month or so. If you would like to contribute an example,
-I will probably be picky about how everything is worded. I may even end up rewriting it all
-myself. I appreciate the feedback and if you have any ideas for what examples I should add
-let me know!
-
-Quinn
