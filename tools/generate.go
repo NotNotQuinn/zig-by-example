@@ -20,6 +20,11 @@ import (
 	"github.com/russross/blackfriday/v2"
 )
 
+const (
+	langFileExt = "zig"
+	shareLink = "https://zig.fly.dev/share"
+)
+
 // siteDir is the target directory into which the HTML gets generated. Its
 // default is set here but can be changed by an argument passed into the
 // program.
@@ -81,6 +86,7 @@ func mustGlob(glob string) []string {
 }
 
 func whichLexer(path string) string {
+
 	if strings.HasSuffix(path, ".zig") {
 		return "zig"
 	} else if strings.HasSuffix(path, ".sh") {
@@ -121,10 +127,10 @@ func parseHashFile(sourcePath string) (string, string) {
 
 func resetURLHashFile(codehash, code, sourcePath string) string {
 	if verbose() {
-		fmt.Println("  Sending request to play.golang.org")
+		fmt.Println("  Sending request to "+shareLink)
 	}
 	payload := strings.NewReader(code)
-	resp, err := http.Post("https://play.golang.org/share", "text/plain", payload)
+	resp, err := http.Post(shareLink, "text/plain", payload)
 	check(err)
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
@@ -188,7 +194,7 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 	for i, seg := range segs {
 		seg.CodeEmpty = (seg.Code == "")
 		seg.CodeLeading = (i < (len(segs) - 1))
-		seg.CodeRun = strings.Contains(seg.Code, "package main")
+		seg.CodeRun = seg.CodeLeading && strings.HasSuffix(sourcePath, "."+langFileExt)
 	}
 	return segs, strings.Join(source, "\n")
 }
@@ -229,13 +235,13 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 			seg.CodeRendered = chromaFormat(seg.Code, sourcePath)
 
 			// adding the content to the js code for copying to the clipboard
-			if strings.HasSuffix(sourcePath, ".go") {
+			if strings.HasSuffix(sourcePath, "."+langFileExt) {
 				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
 			}
 		}
 	}
-	// we are only interested in the 'go' code to pass to play.golang.org
-	if lexer != "go" {
+	// we are only interested in the target code to upload
+	if lexer != langFileExt {
 		filecontent = ""
 	}
 	return segs, filecontent
