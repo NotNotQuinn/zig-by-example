@@ -2,6 +2,12 @@
 
 set -e
 
+if [[ "$(git rev-parse cloudflare-pages)" == "$(git rev-parse HEAD)" ]]; then
+	echo "Branch cloudflare-pages is already at HEAD.";
+	exit 1;
+
+fi
+
 if [ -n "$(git status --porcelain)" ]; then
 	echo "Git repo is dirty; aborting"
 	exit 1
@@ -22,4 +28,4 @@ echo "Git repo is clean"
 
 echo "Moving branch cloudflare-pages to point here and pushing to remote"
 git branch -f cloudflare-pages HEAD
-git push cloudflare-pages
+git push origin cloudflare-pages
