@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ -n "$(git status --porcelain)" ]; then
+	echo "Git repo is dirty; aborting"
+	exit 1
+fi
+
+echo "Git repo is clean"
+echo "Rebuilding..."
+
+rm -r public
+VERBOSE=1 tools/build
+
+if [ -n "$(git status --porcelain)" ]; then
+	echo "Git repo is dirty after build; aborting"
+	exit 1
+fi
+
+echo "Git repo is clean"
+
+echo "Moving branch cloudflare-pages to point here and pushing to remote"
+git branch -f cloudflare-pages HEAD
+git push cloudflare-pages
