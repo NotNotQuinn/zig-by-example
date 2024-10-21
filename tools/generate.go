@@ -34,6 +34,10 @@ func verbose() bool {
 	return len(os.Getenv("VERBOSE")) > 0
 }
 
+func noupload() bool {
+	return len(os.Getenv("NOUPLOAD")) > 0
+}
+
 func check(err error) {
 	if err != nil {
 		panic(err)
@@ -194,7 +198,7 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 	for i, seg := range segs {
 		seg.CodeEmpty = (seg.Code == "")
 		seg.CodeLeading = (i < (len(segs) - 1))
-		seg.CodeRun = seg.CodeLeading && strings.HasSuffix(sourcePath, "."+langFileExt)
+		seg.CodeRun = strings.Contains(seg.Code, "const std = @import(\"std\");")
 	}
 	return segs, strings.Join(source, "\n")
 }
@@ -282,7 +286,9 @@ func parseExamples() []*Example {
 			}
 		}
 		newCodeHash := sha1Sum(example.GoCode)
-		if example.GoCodeHash != newCodeHash {
+		if noupload() {
+			fmt.Println("  Skipping upload to "+shareLink)
+		} else if example.GoCodeHash != newCodeHash {
 			example.URLHash = resetURLHashFile(newCodeHash, example.GoCode, "examples/"+example.ID+"/"+example.ID+".hash")
 		}
 		examples = append(examples, &example)
