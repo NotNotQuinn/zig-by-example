@@ -7,6 +7,8 @@ hello-world  hello-world.o  hello-world.zig
 $ ./hello-world
 Hello, World!
 
+$ rm ./hello-world ./hello-world.o
+
 # Or you can use `zig run` to compile and run.
 $ zig run hello-world.zig
 Hello, World!
